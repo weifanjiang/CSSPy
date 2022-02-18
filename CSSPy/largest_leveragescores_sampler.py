@@ -40,10 +40,12 @@ class largest_leveragescores_Sampler:
         self.k = k
         self.sampling_list = []
         self.lvs_array = self.Estimate_Leverage_Scores()
+        self.selected = []
     def Estimate_Leverage_Scores(self):
         return 1/(self.k)*np.diag(np.dot(self.Q,self.Q.T))
     def MultiRounds(self):
         temp_list = list(reversed(np.argsort(self.lvs_array)))
         sampled_indices_ = temp_list[0:self.k]
         self.sampling_list = sampled_indices_
+        self.selected = self.sampling_list
         return self.A[:,sampled_indices_]

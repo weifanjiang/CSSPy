@@ -24,6 +24,7 @@ class k_Volume_Sampling_Sampler:
         self.k = k
         self.sampling_list = []
         self.column_selected_temp = np.zeros(k)
+        self.selected = []
     def OneRound(self):
         sampled_indices = np.random.choice(self.N, 1, replace=True, p=list(self.lvs_array))
         column_selected = self.Q_temp[:,sampled_indices[0]]
@@ -33,6 +34,7 @@ class k_Volume_Sampling_Sampler:
         return sampled_indices[0]
     def MultiRounds(self):
         sampled_indices_ = k_dpp_KuTa12(np.power(self.D,2), np.transpose(self.V[0:self.nnz_D,:]), self.k)
+        self.selected = sampled_indices_
         return self.A[:,sampled_indices_]
 
 

@@ -48,6 +48,7 @@ class double_Phase_Sampler:
         self.sampling_list = []
         self.column_selected_temp = np.zeros(k)
         self.lvs_array = self.Estimate_Leverage_Scores()
+        self.selected = []
     def Estimate_Leverage_Scores(self):
         return 1/(self.k)*np.diag(np.dot(self.Q.T,self.Q))
     def DoublePhase(self):
@@ -58,6 +59,7 @@ class double_Phase_Sampler:
             if count in self.phase_two_sampling_list:
                 self.sampling_list.append(t)
             count += 1
+        self.selected = self.sampling_list
         return self.A[:,self.sampling_list]
     def PhaseOne(self):
         sampled_indices = np.random.choice(self.N, self.phase_one_s, replace=True, p=list(self.lvs_array))
