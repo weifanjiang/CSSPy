@@ -75,7 +75,7 @@ def dpp_exact_sampling_KuTa12(eig_val, eig_vec):
     # Select eigen vectors \propto eig_vals
     ind_bool = np.random.rand(len(eig_val)) < eig_val
     # Stack the selected eigen-vectors
-    V = eig_vec[:,ind_bool]
+    V = eig_vec[:,ind_bool[:len(eig_vec[1])]]
     # N = size of the ground set, n = size of the sample
     N, n = V.shape 
 
