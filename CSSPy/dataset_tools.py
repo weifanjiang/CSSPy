@@ -12,7 +12,6 @@ import scipy.io
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from scipy import random, linalg, dot, diag, all, allclose
 import timeit
 from scipy.sparse.linalg import svds
 

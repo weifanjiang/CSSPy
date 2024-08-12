@@ -16,7 +16,6 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from copy import deepcopy
 import seaborn as sns
-from scipy import random, linalg, dot, diag, all, allclose
 import timeit
 from scipy.sparse.linalg import svds
 
